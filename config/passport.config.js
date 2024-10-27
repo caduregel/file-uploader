@@ -8,7 +8,7 @@ const prisma = new PrismaClient()
 passport.use(
     new LocalStrategy(async (username, password, done) => {
         try {
-            const user = await prisma.users.findUnique({
+            const user = await prisma.User.findUnique({
                 where: {
                     username: username
                 }
@@ -33,9 +33,8 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async (username, done) => {
-    console.log(username)
     try {
-        const user = await prisma.users.findUnique({
+        const user = await prisma.User.findUnique({
             where: {
                 username: username
             }

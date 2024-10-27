@@ -16,14 +16,23 @@ datasource db {
 model Session {
   id        String   @id
   sid       String   @unique
-  data      String   // MediumText may be needed for MySql
-  expiresAt   DateTime
+  data      String // MediumText may be needed for MySql
+  expiresAt DateTime
 }
 
 model User {
-  id        Int   @id   @default(autoincrement())
-  username      String?  
+  username String   @id
   password String?
+  folders  Folder[]
 
   @@map("users")
+}
+
+model Folder {
+  id           Int     @id @default(autoincrement())
+  title        String
+  User         User?   @relation(fields: [userUsername], references: [username])
+  userUsername String?
+
+  @@map("folders")
 }

@@ -5,7 +5,7 @@ const get_home = asyncHandler(async (req, res) => {
     if(!req.user){
         res.redirect('/log-in')
     } else{
-        res.render("home", {})
+        res.render("home", {user: req.user})
     }
 })
 
