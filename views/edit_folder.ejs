@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= folder.title %>
+    </title>
+</head>
+
+<body>
+    <h1>
+        <%= folder.title %>
+    </h1>
+    <form action="/folders/edit/<%= folder.id %>" method="post">
+        <label for="title">Edit title</label>
+        <input type="text" name="title" value="<%= folder.title %>" id="">
+        <label for="checkbox">Delete folder instead:</label>
+        <input type="checkbox" name="delete" id="delete">
+        <input type="submit" value="submit">
+    </form>
+    <a href="/">Return to home page</a>
+</body>
+
+</html>
