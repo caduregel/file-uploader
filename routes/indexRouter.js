@@ -3,12 +3,19 @@ const { get_log_in, get_sign_up, post_sign_up } = require("../controllers/authCo
 const { get_home } = require("../controllers/homeController");
 const passport = require("../config/passport.config");
 const { get_new_folder, post_new_folder, get_folder, get_edit_folder, post_edit_folder } = require("../controllers/folderController");
+const { get_new_file, post_new_file } = require("../controllers/fileController");
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
 
 const indexRouter = new Router
 
 indexRouter.get('/', get_home)
 
 
+
+// Files
+indexRouter.get("/folders/:id/new_file", get_new_file)
+indexRouter.post("/folders/:id/new_file",  upload.single('fileName'), post_new_file)
 
 // Folders
 indexRouter.get("/new_folder", get_new_folder)

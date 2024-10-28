@@ -6,6 +6,7 @@ const indexRouter = require('./routes/indexRouter');
 const express = require('express');
 const passport = require("./config/passport.config")
 
+
 const app = express();
 app.set("views", path.join(__dirname, "views"));app.set("view engine", "ejs");
 
